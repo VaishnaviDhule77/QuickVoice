@@ -104,9 +104,6 @@ export const prepareKnowledgeSourceUpdate = async (input: {
         storagePath: input.storagePath,
         status: kbStatus.PROCESSING,
         lastIndexedAt: null,
-        errorCode: null,
-        errorMessage: null,
-        errorRetryable: null,
       },
     });
 
@@ -136,9 +133,6 @@ export const markActive = async (kbIds: string[], agentId: string) => {
       data: {
         status: kbStatus.ACTIVE,
         lastIndexedAt: new Date(),
-        errorCode: null,
-        errorMessage: null,
-        errorRetryable: null,
       },
     });
 
@@ -166,15 +160,11 @@ export const markError = async (
 ) => {
   if (kbIds.length === 0) return;
 
-  const safeFailure = { ...FALLBACK_PROCESSING_FAILURE, ...failure };
   await prisma.knowledgeSource.updateMany({
     where: { kbId: { in: kbIds } },
     data: {
       status: kbStatus.ERROR,
       lastIndexedAt: null,
-      errorCode: safeFailure.code,
-      errorMessage: safeFailure.userMessage,
-      errorRetryable: safeFailure.retryable,
     },
   });
 };
@@ -196,9 +186,6 @@ export const applyProcessingSummary = async (
         data: {
           status: kbStatus.ACTIVE,
           lastIndexedAt: new Date(),
-          errorCode: null,
-          errorMessage: null,
-          errorRetryable: null,
         },
       });
 
@@ -217,9 +204,6 @@ export const applyProcessingSummary = async (
           data: {
             status: kbStatus.ERROR,
             lastIndexedAt: null,
-            errorCode: failure.code,
-            errorMessage: failure.userMessage,
-            errorRetryable: failure.retryable,
           },
         }),
       ),
