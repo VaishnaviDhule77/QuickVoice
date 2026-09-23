@@ -4,7 +4,9 @@
   "compilerOptions": {
     "outDir": "dist",
     "rootDir": ".",
-    "types": ["node"]
+    "types": ["node"],
+    "esModuleInterop": true,
+    "skipLibCheck": true
   },
   "include": ["src/**/*.ts", "data/**/*.ts"],
   "exclude": ["node_modules", "dist", "prisma/generated"]
