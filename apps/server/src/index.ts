@@ -234,9 +234,9 @@ void liveTranscriptGateway.start().catch((error) => {
   });
 });
 
-httpServer.listen(port, () => {
+httpServer.listen(Number(port), "0.0.0.0", () => {
   console.log(
-    `Server listening on http://localhost:${port}`
+    `Server listening on http://0.0.0.0:${port}`
   );
 });
 
