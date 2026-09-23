@@ -11,7 +11,7 @@
     "dev": "tsx watch src/index.ts",
     "build": "tsc",
     "lint": "tsc --noEmit --pretty false",
-    "start": "node dist/src/index.js",
+    "start": "tsx src/index.ts",
     "check-types": "tsc --noEmit",
     "test": "tsx --test tests/**/*.test.ts",
     "seed": "tsx prisma/seed.ts",
@@ -52,13 +52,13 @@
     "stripe": "^19.1.0",
     "swagger-ui-express": "^5.0.1",
     "telnyx": "^6.83.0",
+    "tsx": "^4.20.0",
     "twilio": "^6.0.2",
     "ws": "^8.21.0",
     "zeptomail": "^6.2.1"
   },
   "devDependencies": {
     "@repo/typescript-config": "workspace:*",
-    "tsx": "^4.20.0",
     "typescript": "^5"
   },
   "dependenciesMeta": {
